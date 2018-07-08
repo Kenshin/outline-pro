@@ -1,5 +1,7 @@
 console.log( "=== outline contentscripts load ===" )
 
+import './assets/css/main.styl';
+
 import * as plugin from 'plugin';
 
 $( 'body' ).find( '.content' ).map( ( idx, item ) => {

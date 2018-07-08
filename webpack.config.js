@@ -124,8 +124,8 @@ const webpack = require( 'webpack' ),
         // css files
         { test: /\.css$/,           loader: 'style!css' },
 
-        // extract stylus files
-        { test: /\.styl$/,          loader: 'css!stylus' },
+        // stylus files
+        { test: /\.styl$/,          loader: 'style!css!stylus' },
 
         // image in js
         { test: /\.(png|jpg|gif)$/, loader: 'url?limit=12288'   },
