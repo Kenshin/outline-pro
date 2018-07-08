@@ -3,18 +3,18 @@ console.log( "=== outline plugin: main load ===" )
 import * as code   from './code';
 import * as bold   from './bold';
 import * as italic from './italic';
+import * as border from './border';
 
-function convert( str ) {
+function convert( $target, str ) {
     str = code.toCode( str );
     str = bold.toBold( str );
     str = italic.toItalic( str );
+    str = border.toBorder( $target, str );
     return str;
 }
 
-function recovery( str ) {
-    str = code.fromCode( str );
-    str = bold.fromBold( str );
-    str = italic.fromItalic( str );
+function recovery( $target, str ) {
+    str = border.fromBorder( $target, str );
     return str;
 }
 

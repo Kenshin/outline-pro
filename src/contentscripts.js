@@ -8,7 +8,7 @@ $( 'body' ).find( '.content' ).map( ( idx, item ) => {
     const $target = $( item ),
           str     = $target.text();
     $target.data( 'outline-content', str );
-    $target.html( plugin.convert( str ) );
+    $target.html( plugin.convert( $target, str ) );
 });
 
 $( '.content' ).focus( event => {
@@ -16,6 +16,7 @@ $( '.content' ).focus( event => {
     const $target = $( event.target ),
           str     = $target.data( 'outline-content' );
     $target.text( str );
+    plugin.recovery( $target, str );
 });
 
 $( '.content' ).blur( event => {
@@ -23,5 +24,5 @@ $( '.content' ).blur( event => {
     const $target = $( event.target ),
           str     = $target.text();
     $target.data( 'outline-content', $target.text() );
-    $target.html( plugin.convert( str ) );
+    $target.html( plugin.convert( $target, str ) );
 });
