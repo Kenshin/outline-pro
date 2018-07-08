@@ -11,7 +11,7 @@ $( 'body' ).find( '.content' ).map( ( idx, item ) => {
     $target.html( plugin.convert( $target, str ) );
 });
 
-$( '.content' ).focus( event => {
+$( '#paper' ).on( 'focus', '.content', event => {
     console.log( event.type, $( event.target ).data( 'outline-content' ) )
     const $target = $( event.target ),
           str     = $target.data( 'outline-content' );
@@ -19,7 +19,7 @@ $( '.content' ).focus( event => {
     plugin.recovery( $target, str );
 });
 
-$( '.content' ).blur( event => {
+$( '#paper' ).on( 'blur', '.content', event => {
     console.log( event.type )
     const $target = $( event.target ),
           str     = $target.text();
