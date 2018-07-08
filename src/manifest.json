@@ -1,0 +1,40 @@
+{
+  "name"            : "Outline Pro",
+  "version"         : "1.0.0",
+  "short_name"      : "Outline Pro",
+  "description"     : "为幕布提供更高级的功能，类似 Dynalist 的 Markdown 支持等",
+  "homepage_url"    : "http://ksria.com/outline",
+  "author"          : "Kenshin Wang <kenshin@ksria.com>",
+  "icons" : {
+    "16"            : "assets/icons/icon16.png",
+    "48"            : "assets/icons/icon48.png",
+    "128"           : "assets/icons/icon128.png"
+  },
+  "permissions"     : [
+    "storage"
+  ],
+  "background": {
+    "scripts"       : [ "/bundle/background.js" ]
+  },
+  "content_scripts" : [
+    {
+      "matches"     : [ "https://*.mubu.com/*" ],
+      "js"          : [
+        "/bundle/vendors.js",
+        "/bundle/contentscripts.js"
+       ],
+      "run_at"      : "document_end"
+    }
+  ],
+  "page_action"     : {
+    "default_icon"  : {
+      "16"          : "assets/icons/icon16.png"
+    }
+  },
+  "web_accessible_resources": [
+    "/assets/images/*"
+  ],
+  "update_url"      : "https://clients2.google.com/service/update2/crx",
+  "content_security_policy" : "script-src 'self' object-src 'self'",
+  "manifest_version": 2
+}

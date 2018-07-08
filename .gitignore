@@ -1,3 +1,10 @@
+# for common
+node_modules/**
+publish/**
+
+# for chrome
+src/bundle/**
+
 # Logs
 logs
 *.log
