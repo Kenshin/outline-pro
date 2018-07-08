@@ -5,8 +5,10 @@ import './assets/css/main.styl';
 import * as plugin from 'plugin';
 
 $( 'body' ).find( '.content' ).map( ( idx, item ) => {
-    const $target = $( item );
-    $target.data( 'outline-content', $target.text() );
+    const $target = $( item ),
+          str     = $target.text();
+    $target.data( 'outline-content', str );
+    $target.html( plugin.convert( str ) );
 });
 
 $( '.content' ).focus( event => {
