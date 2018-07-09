@@ -20,7 +20,7 @@ function toImg( str ) {
           title = str => {
             str = str.match( /!\[[\S ]*\]/ );
             str = str[0].replace( '![', '' ).replace( ']', '' );
-            return str;
+            return str == '' ? '已插入图片' : str;
           },
           href = str => {
             str = str.match( /http\S+.(png|gif|jpg)/ );
