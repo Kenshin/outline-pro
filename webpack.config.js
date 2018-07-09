@@ -143,13 +143,10 @@ const webpack = require( 'webpack' ),
         import: ['~nib/lib/nib/index.styl']
       },
 
-      //node: {
-      //  fs: 'empty'
-      //},
-
       resolve: {
         alias : {
           jquery     : __dirname + '/src/vender/jquery-3.3.1.min.js',
+          timeago    : __dirname + '/src/vender/timeago.min.js',
 
           plugin     : __dirname + '/src/plugin/main.js',
           storage    : __dirname + '/src/service/storage.js',
