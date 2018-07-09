@@ -3,7 +3,7 @@ console.log( "=== outline plugin: main load ===" )
 import * as code   from './code';
 import * as bold   from './bold';
 import * as italic from './italic';
-import * as border from './border';
+import * as pri    from './priority';
 import * as tag    from './tag';
 import * as fas    from './fas';
 import * as img    from './img';
@@ -17,12 +17,12 @@ function convert( $target, str ) {
     str = fas.toFas( str );
     str = img.toImg( str );
     str = lnk.toLnk( str );
-    str = border.toBorder( $target, str );
+    str = pri.toPriority( $target, str );
     return str;
 }
 
 function recovery( $target, str ) {
-    str = border.fromBorder( $target, str );
+    str = pri.fromPriority( $target, str );
     return str;
 }
 

@@ -1,7 +1,7 @@
-console.log( "=== outline plugin: border load ===" )
+console.log( "=== outline plugin: priority load ===" )
 
-function toBorder( $target, str ) {
-    console.log( "border str before is", str )
+function toPriority( $target, str ) {
+    console.log( "priority str before is", str )
     if ( /^! /.test( str ) ) {
         $target.addClass( 'outline-normal' );
     } else if ( /^!! /.test( str ) ) {
@@ -12,7 +12,7 @@ function toBorder( $target, str ) {
     return str;
 }
 
-function fromBorder( $target ) {
+function fromPriority( $target ) {
     $target
         .removeClass( 'outline-primary' )
         .removeClass( 'outline-secondary' )
@@ -20,6 +20,6 @@ function fromBorder( $target ) {
 }
 
 export {
-    toBorder,
-    fromBorder,
+    toPriority,
+    fromPriority,
 }
