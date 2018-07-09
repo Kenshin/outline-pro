@@ -14,7 +14,9 @@ function toTime( str ) {
         const repl = arr.map( item => {
             let time = item;
             time = time.replace( /\[|\]/ig, '' ).trim();
-            return `<outline class="time"><i class="fas fa-calendar-alt"></i> ${ago(time)}</outline>`;
+            time = ago( time );
+            const agoCls = time.includes( '前' ) ? 'ago' : '';
+            return `<outline class="time ${agoCls}"><i class="fas fa-calendar-alt"></i> ${time}</outline>`;
         });
         arr.forEach( ( item, idx ) => {
             str = str.replace( arr[idx], repl[idx] );

@@ -28,7 +28,9 @@ function toDate( str ) {
         const repl = arr.map( item => {
             let date = item;
             date = date.replace( /\[|\]/ig, '' ).trim();
-            return `<outline class="time"><i class="fas fa-calendar-alt"></i> ${ago(date)}</outline>`;
+            date = ago( date );
+            const agoCls = date.includes( '前' ) ? 'ago' : '';
+            return `<outline class="time ${agoCls}"><i class="fas fa-calendar-alt"></i> ${date}</outline>`;
         });
         arr.forEach( ( item, idx ) => {
             str = str.replace( arr[idx], repl[idx] );
