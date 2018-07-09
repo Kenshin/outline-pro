@@ -8,6 +8,7 @@ import * as tag    from './tag';
 import * as fas    from './fas';
 import * as img    from './img';
 import * as lnk    from './link';
+import * as time   from './time';
 
 function convert( $target, str ) {
     str = code.toCode( str );
@@ -17,6 +18,7 @@ function convert( $target, str ) {
     str = fas.toFas( str );
     str = img.toImg( str );
     str = lnk.toLnk( str );
+    str = time.toTime( str );
     str = pri.toPriority( $target, str );
     return str;
 }
