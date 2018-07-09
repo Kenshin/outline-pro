@@ -29,5 +29,3 @@ $( '#paper' ).on( 'blur', '.content', event => {
     $target.data( 'outline-content', str );
     $target.html( plugin.convert( $target, str ) );
 });
-
-console.log( "asdfasdfsd", storage.time )
