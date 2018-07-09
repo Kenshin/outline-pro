@@ -6,6 +6,7 @@ import * as italic from './italic';
 import * as border from './border';
 import * as tag    from './tag';
 import * as fas    from './fas';
+import * as img    from './img';
 
 function convert( $target, str ) {
     str = code.toCode( str );
@@ -13,6 +14,7 @@ function convert( $target, str ) {
     str = italic.toItalic( str );
     str = tag.toTag( str );
     str = fas.toFas( str );
+    str = img.toImg( str );
     str = border.toBorder( $target, str );
     return str;
 }
