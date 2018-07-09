@@ -5,12 +5,14 @@ import * as bold   from './bold';
 import * as italic from './italic';
 import * as border from './border';
 import * as tag    from './tag';
+import * as fas    from './fas';
 
 function convert( $target, str ) {
     str = code.toCode( str );
     str = bold.toBold( str );
     str = italic.toItalic( str );
     str = tag.toTag( str );
+    str = fas.toFas( str );
     str = border.toBorder( $target, str );
     return str;
 }
