@@ -152,6 +152,7 @@ const webpack = require( 'webpack' ),
           jquery     : __dirname + '/src/vender/jquery-3.3.1.min.js',
 
           plugin     : __dirname + '/src/plugin/main.js',
+          storage    : __dirname + '/src/service/storage.js',
         }
       }
 
