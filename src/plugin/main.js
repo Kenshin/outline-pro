@@ -9,6 +9,7 @@ import * as fas    from './fas';
 import * as img    from './img';
 import * as lnk    from './link';
 import * as time   from './time';
+import * as date   from './date';
 
 function convert( $target, str ) {
     str = code.toCode( str );
@@ -19,6 +20,7 @@ function convert( $target, str ) {
     str = img.toImg( str );
     str = lnk.toLnk( str );
     str = time.toTime( str );
+    str = date.toDate( str );
     str = pri.toPriority( $target, str );
     return str;
 }
