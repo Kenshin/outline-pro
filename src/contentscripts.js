@@ -17,8 +17,8 @@ $( '#paper' ).on( 'focus', '.content', event => {
     console.log( event.type, $( event.target ).data( 'outline-content' ) )
     const $target = $( event.target ),
           str     = $target.data( 'outline-content' );
-    $target.text( str );
     plugin.recovery( $target, str );
+    $target.text( str );
 });
 
 $( '#paper' ).on( 'blur', '.content', event => {
@@ -29,3 +29,5 @@ $( '#paper' ).on( 'blur', '.content', event => {
     $target.data( 'outline-content', str );
     $target.html( plugin.convert( $target, str ) );
 });
+
+console.log( "asdfasdfsd", storage.time )
