@@ -1,6 +1,6 @@
 console.log( "=== outline plugin: img load ===" )
 
-const target = 'http*://**.png';
+const target = 'http\S+.(png|gif|jpg)|\!\[\]\(http\S+.(png|gif|jpg)\)';
 
 function init() {
     $( '#paper' ).on( 'mouseover', '.outline-img', event => {
