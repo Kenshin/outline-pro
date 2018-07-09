@@ -14,7 +14,7 @@
     "storage"
   ],
   "background": {
-    "scripts"       : [ "/bundle/background.js" ]
+    "scripts"       : [ "/bundle/vendors.js", "/bundle/background.js" ]
   },
   "content_scripts" : [
     {
