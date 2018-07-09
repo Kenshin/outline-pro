@@ -26,6 +26,6 @@ $( '#paper' ).on( 'blur', '.content', event => {
     console.log( event.type )
     const $target = $( event.target ),
           str     = $target.text();
-    $target.data( 'outline-content', $target.text() );
+    $target.data( 'outline-content', str );
     $target.html( plugin.convert( $target, str ) );
 });
