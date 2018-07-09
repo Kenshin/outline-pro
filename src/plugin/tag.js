@@ -1,10 +1,10 @@
 console.log( "=== outline plugin: tag load ===" )
 
-const target = '#(project|feature|release|bug)';
+const target = '#(project|feature|release|bug|todo|next|doing|done|qa)';
 
 function toTag( str ) {
     console.log( "tag str before is", str )
-    const arr = str.match( /#(project|feature|release|bug) /ig );
+    const arr = str.match( /#(project|feature|release|bug|todo|next|doing|done|qa|pending)( |$)/ig );
     if ( arr && arr.length > 0 ) {
         const repl = arr.map( item => {
             let type = item;
