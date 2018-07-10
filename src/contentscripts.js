@@ -18,6 +18,10 @@ $( '#paper' ).on( 'keydown', '.content', event => {
 
 $( '#paper' ).on( 'keyup', '.content', event => {
     storage.isClick = false;
+    const $target = $( event.target ),
+          str     = $target.text(),
+          repl    = plugin.replace( $target, str );
+    str != repl && $target.text( repl );
 })
 
 $( '#paper' ).on( 'focus', '.content', event => {
@@ -26,7 +30,7 @@ $( '#paper' ).on( 'focus', '.content', event => {
     const $target = $( event.target ),
           str     = $target.data( 'outline-content' );
     plugin.recovery( $target, str );
-    $target.text( plugin.replace( $target, str ) );
+    $target.text( str );
 });
 
 $( '#paper' ).on( 'blur', '.content', event => {
