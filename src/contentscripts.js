@@ -12,6 +12,14 @@ $( 'body' ).find( '.content' ).map( ( idx, item ) => {
     $target.html( plugin.convert( $target, str ) );
 });
 
+$( '#paper' ).on( 'keydown', '.content', event => {
+    storage.isClick = true;
+})
+
+$( '#paper' ).on( 'keyup', '.content', event => {
+    storage.isClick = false;
+})
+
 $( '#paper' ).on( 'focus', '.content', event => {
     if ( storage.isClick ) return;
     console.log( event.type, $( event.target ).data( 'outline-content' ) )
