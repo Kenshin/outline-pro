@@ -16,7 +16,7 @@ init();
 
 function toLnk( str ) {
     //console.log( "link str before is", str )
-    if ( str.startsWith( '<a class="outline-img"' ) ) return str;
+    if ( str.includes( '<a class="outline-img"' ) ) return str;
     const arr = str.match( /http\S+/ig );
     if ( arr && arr.length > 0 ) {
         const repl = arr.map( item => {

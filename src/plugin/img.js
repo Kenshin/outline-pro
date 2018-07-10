@@ -29,7 +29,7 @@ function toImg( str ) {
           };
     if ( arr && arr.length > 0 ) {
         const repl = arr.map( item => {
-            return `<a class="outline-img" href=${href(item)} target="_blank"><i class="fas fa-image"></i> ${title(item)}</a>`
+            return `<a class="outline-img" href="${href(item)}" target="_blank"><i class="fas fa-image"></i> ${title(item)}</a>`
         });
         arr.forEach( ( item, idx ) => {
             str = str.replace( arr[idx], repl[idx] );
