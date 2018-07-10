@@ -5,6 +5,8 @@ import './assets/css/main.styl';
 import * as plugin from 'plugin';
 import storage     from 'storage';
 
+const selector = '.content';
+
 /**
  * Listen runtime message
  */
@@ -13,11 +15,11 @@ chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
     else if ( request == 'convert' )  convert();
 });
 
-$( '#paper' ).on( 'keydown', '.content', event => {
+$( '#paper' ).on( 'keydown', selector, event => {
     storage.isClick = true;
 })
 
-$( '#paper' ).on( 'keyup', '.content', event => {
+$( '#paper' ).on( 'keyup', selector, event => {
     storage.isClick = false;
     const $target = $( event.target ),
           str     = $target.text(),
@@ -25,7 +27,7 @@ $( '#paper' ).on( 'keyup', '.content', event => {
     str != repl && $target.text( repl );
 })
 
-$( '#paper' ).on( 'focus', '.content', event => {
+$( '#paper' ).on( 'focus', selector, event => {
     if ( storage.isClick ) return;
     console.log( event.type, $( event.target ).data( 'outline-content' ) )
     const $target = $( event.target ),
@@ -34,7 +36,7 @@ $( '#paper' ).on( 'focus', '.content', event => {
     $target.text( str );
 });
 
-$( '#paper' ).on( 'blur', '.content', event => {
+$( '#paper' ).on( 'blur', selector, event => {
     if ( storage.isClick ) return;
     console.log( event.type )
     const $target = $( event.target ),
@@ -47,7 +49,7 @@ $( '#paper' ).on( 'blur', '.content', event => {
  * Convert data
  */
 function convert() {
-    $( 'body' ).find( '.content' ).map( ( idx, item ) => {
+    $( 'body' ).find( selector ).map( ( idx, item ) => {
         const $target = $( item ),
               str     = $target.text();
         $target.data( 'outline-content', str );
@@ -59,7 +61,7 @@ function convert() {
  * Recovery data
  */
 function recovery() {
-    $( 'body' ).find( '.content' ).map( ( idx, item ) => {
+    $( 'body' ).find( selector ).map( ( idx, item ) => {
         const $target = $( item ),
               str     = $target.data( 'outline-content' );
         plugin.recovery( $target, str );
