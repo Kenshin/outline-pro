@@ -9,7 +9,7 @@ function init() {
 init();
 
 function toFas( str ) {
-    console.log( "fas str before is", str )
+    //console.log( "fas str before is", str )
     const arr = str.match( /:\S+:/ig );
     if ( arr && arr.length > 0 ) {
         const repl = arr.map( item => {
@@ -21,7 +21,7 @@ function toFas( str ) {
             str = str.replace( arr[idx], repl[idx] );
         });
     }
-    console.log( "italic str after is", str, arr )
+    //console.log( "italic str after is", str, arr )
     return str;
 
 }

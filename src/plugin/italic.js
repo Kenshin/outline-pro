@@ -3,7 +3,7 @@ console.log( "=== outline plugin: italic load ===" )
 const target = '_';
 
 function toItalic( str ) {
-    console.log( "italic str before is", str )
+    //console.log( "italic str before is", str )
     const arr = str.match( /_[\S ][^_]+_/ig );
     if ( arr && arr.length > 0 ) {
         const repl = arr.map( item => {
@@ -13,7 +13,7 @@ function toItalic( str ) {
             str = str.replace( arr[idx], repl[idx] );
         });
     }
-    console.log( "italic str after is", str, arr )
+    //console.log( "italic str after is", str, arr )
     return str;
 }
 

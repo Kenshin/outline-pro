@@ -3,7 +3,7 @@ console.log( "=== outline plugin: bold load ===" )
 const target = '**';
 
 function toBold( str ) {
-    console.log( "bold str before is", str )
+    //console.log( "bold str before is", str )
     const arr = str.match( /\*\*[\S ][^*]+\*\*/ig );
     if ( arr && arr.length > 0 ) {
         const repl = arr.map( item => {
@@ -13,7 +13,7 @@ function toBold( str ) {
             str = str.replace( arr[idx], repl[idx] );
         });
     }
-    console.log( "bold str after is", str, arr )
+    //console.log( "bold str after is", str, arr )
     return str;
 }
 

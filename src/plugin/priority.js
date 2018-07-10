@@ -1,7 +1,7 @@
 console.log( "=== outline plugin: priority load ===" )
 
 function toPriority( $target, str ) {
-    console.log( "priority str before is", str )
+    //console.log( "priority str before is", str )
     if ( /^! /.test( str ) ) {
         $target.addClass( 'outline-normal' );
     } else if ( /^!! /.test( str ) ) {

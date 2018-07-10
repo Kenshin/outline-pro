@@ -15,7 +15,7 @@ function init() {
 init();
 
 function toLnk( str ) {
-    console.log( "link str before is", str )
+    //console.log( "link str before is", str )
     if ( str.startsWith( '<a class="outline-img"' ) ) return str;
     const arr = str.match( /http\S+/ig );
     if ( arr && arr.length > 0 ) {
@@ -27,7 +27,7 @@ function toLnk( str ) {
             str = str.replace( arr[idx], repl[idx] );
         });
     }
-    console.log( "link str after is", str, arr )
+    //console.log( "link str after is", str, arr )
     return str;
 }
 

@@ -3,7 +3,7 @@ console.log( "=== outline plugin: code load ===" )
 const target = '`';
 
 function toCode( str ) {
-    console.log( "code str before is", str )
+    //console.log( "code str before is", str )
     const arr = str.match( /`[\S ][^`]+`/ig );
     if ( arr && arr.length > 0 ) {
         const repl = arr.map( item => {
@@ -13,7 +13,7 @@ function toCode( str ) {
             str = str.replace( arr[idx], repl[idx] );
         });
     }
-    console.log( "code str after is", str, arr )
+    //console.log( "code str after is", str, arr )
     return str;
 }
 

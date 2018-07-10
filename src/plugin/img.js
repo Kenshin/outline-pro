@@ -15,7 +15,7 @@ function init() {
 init();
 
 function toImg( str ) {
-    console.log( "img str before is", str )
+    //console.log( "img str before is", str )
     const arr = str.match( /\!\[[\S ]*\]\(http\S+.(png|gif|jpg)\)/ig ),
           title = str => {
             str = str.match( /!\[[\S ]*\]/ );
@@ -35,7 +35,7 @@ function toImg( str ) {
             str = str.replace( arr[idx], repl[idx] );
         });
     }
-    console.log( "img str after is", str, arr )
+    //console.log( "img str after is", str, arr )
     return str;
 }
 

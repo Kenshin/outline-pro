@@ -5,7 +5,7 @@ import * as todo from './todo';
 const target = '[now|tomorrow|week]';
 
 function toDate( str ) {
-    console.log( "date str before is", str )
+    //console.log( "date str before is", str )
     const arr = str.match( /\[(now|tomorrow|week)\]/ig ),
           ago = str => {
             let hour = 1000 * 60 * 60,
@@ -30,7 +30,7 @@ function toDate( str ) {
             str = str.replace( arr[idx], repl[idx] );
         });
     }
-    console.log( "date str after is", str, arr )
+    //console.log( "date str after is", str, arr )
     return str;
 }
 

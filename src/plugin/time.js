@@ -5,7 +5,7 @@ import * as todo from './todo';
 const target = '[2018-07-10 15:00] [2018-07-10]';
 
 function toTime( str ) {
-    console.log( "time str before is", str )
+    //console.log( "time str before is", str )
     const arr = str.match( /\[\d{4}-\d{2}-\d{2}( \d{2}:\d{2})?\]/ig ),
           ago = str => {
             return new Date( str + ':00' );
@@ -16,7 +16,7 @@ function toTime( str ) {
             str = str.replace( arr[idx], repl[idx] );
         });
     }
-    console.log( "time str after is", str, arr )
+    //console.log( "time str after is", str, arr )
     return str;
 }
 
