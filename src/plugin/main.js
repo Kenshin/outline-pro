@@ -10,6 +10,7 @@ import * as img    from './img';
 import * as lnk    from './link';
 import * as time   from './time';
 import * as date   from './date';
+import * as action from './action';
 
 function convert( $target, str ) {
     str = code.toCode( str );
