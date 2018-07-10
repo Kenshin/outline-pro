@@ -62,7 +62,7 @@ function timeDiff() {
             !$parent.hasClass( 'finished' ) && expire.push( time );
         }
     });
-    console.log( expire )
+    //console.log( expire )
     return expire;
 }
 
