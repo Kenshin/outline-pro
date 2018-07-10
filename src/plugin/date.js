@@ -35,6 +35,7 @@ function toDate( str ) {
 }
 
 function replace( $target, str ) {
+    if ( str == undefined ) return str;
     const arr = str.match( /\[(now|tomorrow|week)\]/ig );
     if ( arr && arr.length > 0 ) {
         let time = $target.find( 'outline[time]' ).attr( 'time' );
