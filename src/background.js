@@ -1,9 +1,23 @@
 console.log( "=== outline background load ===" )
 
+let convert = true;
+
 chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
     console.log( request, sender, sendResponse )
     if ( request.type = "update_badge" ) {
         badge( request.count );
+    }
+});
+
+chrome.browserAction.onClicked.addListener( tab => {
+    if ( convert ) {
+        chrome.browserAction.setTitle({ title: '美化原始数据' });
+        chrome.tabs.sendMessage( tab.id, "recovery" );
+        convert = false;
+    } else {
+        chrome.browserAction.setTitle({ title: '恢复原始数据' });
+        chrome.tabs.sendMessage( tab.id, "convert" );
+        convert = true;
     }
 });
 

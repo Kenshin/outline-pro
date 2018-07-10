@@ -5,11 +5,12 @@ import './assets/css/main.styl';
 import * as plugin from 'plugin';
 import storage     from 'storage';
 
-$( 'body' ).find( '.content' ).map( ( idx, item ) => {
-    const $target = $( item ),
-          str     = $target.text();
-    $target.data( 'outline-content', str );
-    $target.html( plugin.convert( $target, str ) );
+/**
+ * Listen runtime message
+ */
+chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
+    if      ( request == 'recovery' ) recovery();
+    else if ( request == 'convert' )  convert();
 });
 
 $( '#paper' ).on( 'keydown', '.content', event => {
@@ -41,3 +42,29 @@ $( '#paper' ).on( 'blur', '.content', event => {
     $target.data( 'outline-content', str );
     $target.html( plugin.convert( $target, str ) );
 });
+
+/**
+ * Convert data
+ */
+function convert() {
+    $( 'body' ).find( '.content' ).map( ( idx, item ) => {
+        const $target = $( item ),
+              str     = $target.text();
+        $target.data( 'outline-content', str );
+        $target.html( plugin.convert( $target, str ) );
+    });
+}
+
+/**
+ * Recovery data
+ */
+function recovery() {
+    $( 'body' ).find( '.content' ).map( ( idx, item ) => {
+        const $target = $( item ),
+              str     = $target.data( 'outline-content' );
+        plugin.recovery( $target, str );
+        $target.text( str );
+    });
+}
+
+convert();
