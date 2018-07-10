@@ -18,7 +18,7 @@ $( '#paper' ).on( 'focus', '.content', event => {
     const $target = $( event.target ),
           str     = $target.data( 'outline-content' );
     plugin.recovery( $target, str );
-    $target.text( str );
+    $target.text( plugin.replace( $target, str ) );
 });
 
 $( '#paper' ).on( 'blur', '.content', event => {

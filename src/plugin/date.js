@@ -34,6 +34,16 @@ function toDate( str ) {
     return str;
 }
 
+function replace( $target, str ) {
+    const arr = str.match( /\[(now|tomorrow|week)\]/ig );
+    if ( arr && arr.length > 0 ) {
+        let time = $target.find( 'outline[time]' ).attr( 'time' );
+        time && ( time = time.replace( /:\d{2}$/ig, '' ));
+        return time ? str.replace( /\[(now|tomorrow|week)\]/ig, `[${time}]` ) : str;
+    }
+    return str;
+}
+
 function fromDate( str ) {
     // TO-DO
 }
@@ -41,4 +51,5 @@ function fromDate( str ) {
 export {
     toDate,
     fromDate,
+    replace,
 }

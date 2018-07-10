@@ -30,7 +30,13 @@ function recovery( $target, str ) {
     return str;
 }
 
+function replace( $target, str ) {
+    str = date.replace( $target, str );
+    return str;
+}
+
 export {
     convert,
-    recovery
+    recovery,
+    replace
 }
