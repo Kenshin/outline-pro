@@ -5,6 +5,17 @@ import timeago from 'timeago';
 import storage from 'storage';
 
 /**
+ * Listen runtime message
+ */
+chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
+    console.log( request, sender, sendResponse )
+    if ( request == 'timediff' ) {
+        const expire = timeDiff();
+        expire.length > 0 && sendResponse( expire );
+    }
+});
+
+/**
  * Format time
  * 
  * @return {string} return now, e.g. 2017-04-03 11:43:53
@@ -33,6 +44,28 @@ function timeTmpl( arr, ago ) {
         storage.todo.push( time );
         return `<outline time="${time}" class="time ${agoCls}"><i class="fas fa-calendar-alt"></i> ${fmt}</outline>`;
     });
+}
+
+/**
+ * Time Diff
+ * 
+ * @return {array} expire time
+ */
+function timeDiff() {
+    let expire = [];
+    const now = new Date();
+    $( `outline[time]` ).map( ( idx, item ) => {
+        const $target = $( item ),
+              $parent = $target.parent().parent().parent(),
+              time    = $target.attr( 'time' ),
+              fmTime  = new Date( time );
+        if ( fmTime - now < 0 ) {
+            !$target.hasClass( 'ago' ) && $target.addClass( 'ago' );
+            !$parent.hasClass( 'finished' ) && expire.push( time );
+        }
+    });
+    console.log( expire )
+    return expire;
 }
 
 export {
