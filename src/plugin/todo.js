@@ -41,7 +41,6 @@ function timeTmpl( arr, ago ) {
         const fmt    = timeago().format( date , 'zh_CN' ),
               agoCls = fmt.includes( '前' ) ? 'ago' : '',
               time   = fmtDate( date );
-        storage.todo.push( time );
         return `<outline time="${time}" class="time ${agoCls}"><i class="fas fa-calendar-alt"></i> ${fmt}</outline>`;
     });
 }
