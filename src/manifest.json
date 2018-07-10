@@ -21,7 +21,7 @@
   },
   "content_scripts" : [
     {
-      "matches"     : [ "https://*.mubu.com/*" ],
+      "matches"     : [ "https://*.mubu.com/edit/*" ],
       "js"          : [
         "/bundle/vendors.js",
         "/bundle/contentscripts.js"
