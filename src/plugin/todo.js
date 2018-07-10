@@ -8,7 +8,6 @@ import storage from 'storage';
  * Listen runtime message
  */
 chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
-    console.log( request, sender, sendResponse )
     if ( request == 'timediff' ) {
         const expire = timeDiff();
         expire.length > 0 && sendResponse( expire );
