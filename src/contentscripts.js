@@ -5,7 +5,7 @@ import './assets/css/main.styl';
 import * as plugin from 'plugin';
 import storage     from 'storage';
 
-const selector = '.content';
+const selector = '.content, .note';
 
 /**
  * Listen runtime message
