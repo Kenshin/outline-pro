@@ -4,7 +4,7 @@ const target = '**';
 
 function toBold( str ) {
     //console.log( "bold str before is", str )
-    const arr = str.match( /\*\*[\S ][^*]+\*\*/ig );
+    const arr = str.match( /\*\*[\S ][^*]*\*\*/ig );
     if ( arr && arr.length > 0 ) {
         const repl = arr.map( item => {
             return item.replace( /^\*\*/, '<outline class="bold">' ).replace( /\*\*$/, '</outline>' );

@@ -4,7 +4,7 @@ const target = '_';
 
 function toItalic( str ) {
     //console.log( "italic str before is", str )
-    const arr = str.match( /_[\S ][^_]+_/ig );
+    const arr = str.match( /_[\S ][^_]*_/ig );
     if ( arr && arr.length > 0 ) {
         const repl = arr.map( item => {
             return item.replace( /^_/, '<outline class="italic">' ).replace( /_$/, '</outline>' );
