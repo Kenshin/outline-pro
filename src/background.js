@@ -70,11 +70,9 @@ function notify() {
  */
 function beautify( tab ) {
     if ( convert ) {
-        chrome.browserAction.setTitle({ title: '美化原始数据' });
         chrome.tabs.sendMessage( tab.id, "recovery" );
         convert = false;
     } else {
-        chrome.browserAction.setTitle({ title: '恢复原始数据' });
         chrome.tabs.sendMessage( tab.id, "convert" );
         convert = true;
     }
