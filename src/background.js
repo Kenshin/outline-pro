@@ -3,8 +3,7 @@ console.log( "=== outline background load ===" )
 let convert = true;
 
 chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
-    console.log( request, sender, sendResponse )
-    if ( request.type = "update_badge" ) {
+    if ( request.type == "update_badge" ) {
         badge( request.count );
     } else if ( request.type == 'beautify' ) {
         convert = request.state;
