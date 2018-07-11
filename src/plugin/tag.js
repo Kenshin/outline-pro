@@ -1,14 +1,15 @@
 console.log( "=== outline plugin: tag load ===" )
 
-const target = '#(project|feature|release|bug|next|doing|done|qa|pending|todo|today|yesterday|tomorrow|after)';
+const target = '#(project|feature|release|bug|next|doing|done|qa|pending|todo|today|yesterday|tomorrow|after|\S+)';
 
 function toTag( str ) {
     //console.log( "tag str before is", str )
-    const arr = str.match( /#(project|feature|release|bug|next|doing|done|qa|pending|todo|today|yesterday|tomorrow|after)( |$)/ig );
+    const arr = str.match( /#(project|feature|release|bug|next|doing|done|qa|pending|todo|today|yesterday|tomorrow|after|\S+)( |$)/ig );
     if ( arr && arr.length > 0 ) {
         const repl = arr.map( item => {
             let type = item;
             type = type.replace( '#', '' ).trim();
+            !/project|feature|release|bug|next|doing|done|qa|pending|todo|today|yesterday|tomorrow|after/.test( type ) && ( type = 'normal' );
             return item.replace( /^#/, `<outline class="tag ${type}">` ).replace( / $/, '</outline>' );
         });
         arr.forEach( ( item, idx ) => {
