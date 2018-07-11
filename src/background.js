@@ -15,10 +15,6 @@ chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
     }
 });
 
-chrome.browserAction.onClicked.addListener( tab => {
-    beautify( tab );
-});
-
 chrome.alarms.onAlarm.addListener( () => {
     getTabId( tabs => {
         if ( tabs && tabs.length > 0 ) {
