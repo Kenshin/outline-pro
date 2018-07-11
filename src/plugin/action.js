@@ -1,15 +1,7 @@
 console.log( "=== outline plugin: action load ===" )
 
 function init() {
-    const observer = new MutationObserver( event => {
-        badge();
-    });
-    observer.observe( $( '.action-save' )[0], {
-        attributes: true, 
-        attributeFilter: ['class'],
-        childList: false, 
-        characterData: false
-    });
+    sync();
 }
 init();
 
@@ -24,6 +16,18 @@ function badge() {
         });
     }
     chrome.runtime.sendMessage( { type: 'update_badge', count } );
+}
+
+function sync() {
+    const observer = new MutationObserver( event => {
+        badge();
+    });
+    observer.observe( $( '.action-save' )[0], {
+        attributes: true, 
+        attributeFilter: ['class'],
+        childList: false, 
+        characterData: false
+    });
 }
 
 export {
