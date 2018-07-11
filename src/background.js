@@ -10,15 +10,7 @@ chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
 });
 
 chrome.browserAction.onClicked.addListener( tab => {
-    if ( convert ) {
-        chrome.browserAction.setTitle({ title: '美化原始数据' });
-        chrome.tabs.sendMessage( tab.id, "recovery" );
-        convert = false;
-    } else {
-        chrome.browserAction.setTitle({ title: '恢复原始数据' });
-        chrome.tabs.sendMessage( tab.id, "convert" );
-        convert = true;
-    }
+    beautify( tab );
 });
 
 chrome.alarms.onAlarm.addListener( () => {
@@ -52,6 +44,23 @@ function notify() {
         message:  '您的待办事项已有过期，请注意。',
         priority: 0
     });
+}
+
+/**
+ * Beautify( convert/recovery )
+ * 
+ * @param {object} tab 
+ */
+function beautify( tab ) {
+    if ( convert ) {
+        chrome.browserAction.setTitle({ title: '美化原始数据' });
+        chrome.tabs.sendMessage( tab.id, "recovery" );
+        convert = false;
+    } else {
+        chrome.browserAction.setTitle({ title: '恢复原始数据' });
+        chrome.tabs.sendMessage( tab.id, "convert" );
+        convert = true;
+    }
 }
 
 /**
