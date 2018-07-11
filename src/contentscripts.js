@@ -25,6 +25,7 @@ $( '#paper' ).on( 'keyup', selector, event => {
           str     = $target.text(),
           repl    = plugin.replace( $target, str );
     str != repl && $target.text( repl );
+    $target.data( 'outline-content', str );
 })
 
 $( '#paper' ).on( 'focus', selector, event => {
@@ -40,8 +41,7 @@ $( '#paper' ).on( 'blur', selector, event => {
     if ( storage.isClick ) return;
     console.log( event.type )
     const $target = $( event.target ),
-          str     = $target.text();
-    $target.data( 'outline-content', str );
+          str     = $target.data( 'outline-content' );
     $target.html( plugin.convert( $target, str ) );
 });
 
