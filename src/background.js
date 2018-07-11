@@ -6,6 +6,13 @@ chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
     console.log( request, sender, sendResponse )
     if ( request.type = "update_badge" ) {
         badge( request.count );
+    } else if ( request.type == 'beautify' ) {
+        convert = request.state;
+        getTabId( tabs => {
+            if ( tabs && tabs.length > 0 ) {
+                beautify( tabs[0] );
+            }
+        });
     }
 });
 
