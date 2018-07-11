@@ -4,11 +4,7 @@ console.log( "=== outline plugin: action load ===" )
  * Listen runtime message
  */
 chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
-    if ( request == 'popout' ) {
-        $( '#editor-header' ).find( '.right .popup' ).removeClass( 'fa-sign-out-alt' ).addClass( 'fa-sign-in-alt' );
-    } else if ( request == 'popin' ) {
-        $( '#editor-header' ).find( '.right .popup' ).removeClass( 'fa-sign-in-alt' ).addClass( 'fa-sign-out-alt' );
-    }
+    design( request );
 });
 
 function init() {
@@ -68,11 +64,31 @@ function bar() {
 function popup( cls, $target ) {
     const popup = cls.includes( 'out' ) ? true : false;
     if ( popup ) {
-        window.open( location.href, '_blank', 'width=700,height=700,toolbar=0,statusbar=0,location=0,status=0' );
+        window.open( location.href, '_blank', 'width=817,height=700,toolbar=0,statusbar=0,location=0,status=0,resizable=0' );
         chrome.runtime.sendMessage( { type: 'popup', popup, href: location.href });
     } else {
         chrome.runtime.sendMessage( { type: 'popup', popup, href: location.href });
         window.close();
+    }
+}
+
+function design( type ) {
+    if ( type == 'popout' ) {
+        $( '#editor-header' ).find( '.right .popup' ).removeClass( 'fa-sign-out-alt' ).addClass( 'fa-sign-in-alt' );
+        $( 'body' ).addClass( 'outline-popup-body' );
+        $( '#editor-header' ).addClass( 'outline-popup-header' );
+        $( '#scroll-content' ).addClass( 'outline-popup-scroll' );
+        $( '.paper-header' ).addClass( 'outline-popup-paper-header' );
+        $( '#paper' ).addClass( 'outline-popup-pager' );
+        $( '#editor-footer' ).hide();
+    } else if ( type == 'popin' ) {
+        $( '#editor-header' ).find( '.right .popup' ).removeClass( 'fa-sign-in-alt' ).addClass( 'fa-sign-out-alt' );
+        $( 'body' ).removeClass( 'outline-popup-body' );
+        $( '#editor-header' ).removeClass( 'outline-popup-header' );
+        $( '#scroll-content' ).removeClass( 'outline-popup-scroll' );
+        $( '.paper-header' ).removeClass( 'outline-popup-paper-header' );
+        $( '#paper' ).removeClass( 'outline-popup-pager' );
+        $( '#editor-footer' ).hide();
     }
 }
 
