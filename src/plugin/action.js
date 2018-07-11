@@ -1,5 +1,16 @@
 console.log( "=== outline plugin: action load ===" )
 
+/**
+ * Listen runtime message
+ */
+chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
+    if ( request == 'popout' ) {
+        $( '#editor-header' ).find( '.right .popup' ).removeClass( 'fa-sign-out-alt' ).addClass( 'fa-sign-in-alt' );
+    } else if ( request = 'popin' ) {
+        $( '#editor-header' ).find( '.right .popup' ).removeClass( 'fa-sign-in-alt' ).addClass( 'fa-sign-out-alt' );
+    }
+});
+
 function init() {
     sync();
     bar();
@@ -34,14 +45,14 @@ function sync() {
 function bar() {
     $( '#editor-header' )
         .find( '.right' )
-        .prepend( `<div id="toolbar-mind" class="operate"><i class="icon popup fas fa-external-link-square-alt"></i></div>` )
+        .prepend( `<div id="toolbar-mind" class="operate"><i class="icon popup fas fa-sign-out-alt"></i></div>` )
         .prepend( `<div id="toolbar-mind" class="operate"><i class="icon beautify convert fas fa-fire"></i></div>` );
 
     $( '#editor-header' ).find( '.right' ).on( 'click', '.popup, .beautify', event => {
         const cls     = event.target.className,
               $target = $( event.target );
         if ( cls.includes( 'popup' ) ) {
-            // TO-DO
+            popup( cls, $target );
         } else if ( cls.includes( 'beautify' ) ) {
             const state = cls.includes( 'convert' ) ? true : false;
             if ( state ) {
@@ -52,6 +63,17 @@ function bar() {
             chrome.runtime.sendMessage( { type: 'beautify', state } );
         }
     });
+}
+
+function popup( cls, $target ) {
+    const popup = cls.includes( 'out' ) ? true : false;
+    if ( popup ) {
+        window.open( location.href, '_blank', 'width=700,height=700,toolbar=0,statusbar=0,location=0,status=0' );
+        chrome.runtime.sendMessage( { type: 'popup', popup, href: location.href });
+    } else {
+        chrome.runtime.sendMessage( { type: 'popup', popup, href: location.href });
+        window.close();
+    }
 }
 
 export {

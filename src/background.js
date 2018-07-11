@@ -1,6 +1,6 @@
 console.log( "=== outline background load ===" )
 
-let convert = true;
+let convert = true, popup = false;
 
 chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
     if ( request.type == "update_badge" ) {
@@ -12,7 +12,22 @@ chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
                 beautify( tabs[0] );
             }
         });
+    } else if ( request.type == 'popup' ) {
+        popup = request.popup;
+        popup ? 
+            getTabId( tabs => {
+                if ( tabs && tabs.length > 0 ) {
+                    setTimeout(() => {
+                        chrome.tabs.remove( tabs[0].id );
+                    }, 1000 );
+                }
+            })
+            : chrome.tabs.create({ url: request.href });
     }
+});
+
+chrome.tabs.onUpdated.addListener( ( id, info, tab ) => {
+    tab.status = 'complete' && tab.url.startsWith( 'https://mubu.com/edit/' ) && chrome.tabs.sendMessage( tab.id, popup ? 'popout' : 'popin' );
 });
 
 chrome.alarms.onAlarm.addListener( () => {
