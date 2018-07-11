@@ -6,7 +6,7 @@ console.log( "=== outline plugin: action load ===" )
 chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
     if ( request == 'popout' ) {
         $( '#editor-header' ).find( '.right .popup' ).removeClass( 'fa-sign-out-alt' ).addClass( 'fa-sign-in-alt' );
-    } else if ( request = 'popin' ) {
+    } else if ( request == 'popin' ) {
         $( '#editor-header' ).find( '.right .popup' ).removeClass( 'fa-sign-in-alt' ).addClass( 'fa-sign-out-alt' );
     }
 });
