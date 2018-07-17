@@ -1,8 +1,9 @@
 {
   "name"            : "Outline Pro",
   "version"         : "1.0.0",
-  "short_name"      : "Outline Pro",
-  "description"     : "为幕布提供更高级的功能，类似 Dynalist 的 Markdown 支持等",
+  "version_name"    : "1.0.0 Alpha 版",
+  "short_name"      : "outlinepro",
+  "description"     : "为 幕布/Workflowy 提供更高级的功能，类似 Dynalist 的 Markdown 支持等",
   "homepage_url"    : "http://ksria.com/outline",
   "author"          : "Kenshin Wang <kenshin@ksria.com>",
   "icons" : {
