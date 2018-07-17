@@ -7,7 +7,7 @@
 #### 版本：
 
 - 2018-07-17  
-  Alpha 1.0.0 <https://github.com/Kenshin/outline/releases/tag/1.0.0-alpha>
+  Alpha 1.0.0 <https://github.com/Kenshin/outline-pro/releases/tag/1.0.0-alpha>
 
 #### 功能：
 
