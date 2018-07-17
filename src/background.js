@@ -23,6 +23,12 @@ chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
                 }
             })
             : chrome.tabs.create({ url: request.href });
+    } else if ( request.type == 'workflowy' ) {
+        getTabId( tabs => {
+            if ( tabs && tabs.length > 0 ) {
+                chrome.tabs.sendMessage( tabs[0].id, request.state ? 'convert' : 'recovery' );
+            }
+        });
     }
 });
 
@@ -47,7 +53,7 @@ chrome.alarms.create({ periodInMinutes: 1 });
  * @param {func} callback 
  */
 function getTabId( callback ) {
-    chrome.tabs.query( {}, tabs => callback( tabs.filter( tab => tab.url.startsWith( 'https://mubu.com/' ) ) ) );
+    chrome.tabs.query( {active: true}, tabs => callback( tabs.filter( tab => tab.url.startsWith( 'https://mubu.com/' ) || tab.url.startsWith( 'https://workflowy.com/' ) ) ) );
 }
 
 /**

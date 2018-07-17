@@ -11,7 +11,8 @@ function init() {
     sync();
     bar();
 }
-init();
+
+location.host == 'mubu.com' ? init() : workflowy();
 
 function badge() {
     let count = 0;
@@ -90,6 +91,18 @@ function design( type ) {
         $( '#paper' ).removeClass( 'outline-popup-pager' );
         $( '#editor-footer' ).hide();
     }
+}
+
+function workflowy() {
+    while ( $( '#pageContainer' ).length > 1 ) {}
+    $( '#header' )
+        .append( `<div class="workflowy-control"><i class="workflowy-icon origin fas fa-tint-slash"></i><i class="workflowy-icon beautify convert fas fa-magic"></i></div>` );
+
+    $( '#header' ).find( '.workflowy-control' ).on( 'click', '.origin, .beautify', event => {
+        const cls   = event.target.className,
+              state = cls.includes( 'beautify' ) ? true : false;
+        chrome.runtime.sendMessage( { type: 'workflowy', state } );
+    });
 }
 
 export {

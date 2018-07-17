@@ -5,7 +5,9 @@ import './assets/css/main.styl';
 import * as plugin from 'plugin';
 import storage     from 'storage';
 
-const selector = '.content, .note';
+const selector = '.content, .note',
+      is_mubu  = location.host == 'mubu.com' ? true : false,
+      root     = is_mubu ? '#paper' : '#pageContainer';
 
 /**
  * Listen runtime message
@@ -15,11 +17,11 @@ chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) => {
     else if ( request == 'convert' )  convert();
 });
 
-$( '#paper' ).on( 'keydown', selector, event => {
+$( root ).on( 'keydown', selector, event => {
     storage.isClick = true;
 })
 
-$( '#paper' ).on( 'keyup', selector, event => {
+$( root ).on( 'keyup', selector, event => {
     storage.isClick = false;
     const $target = $( event.target ),
           str     = $target.text(),
@@ -28,7 +30,7 @@ $( '#paper' ).on( 'keyup', selector, event => {
     $target.data( 'outline-content', str );
 })
 
-$( '#paper' ).on( 'focus', selector, event => {
+is_mubu && $( root ).on( 'focus', selector, event => {
     if ( storage.isClick ) return;
     console.log( event.type, $( event.target ).data( 'outline-content' ) )
     const $target = $( event.target ),
@@ -37,7 +39,7 @@ $( '#paper' ).on( 'focus', selector, event => {
     $target.text( str );
 });
 
-$( '#paper' ).on( 'blur', selector, event => {
+is_mubu && $( root ).on( 'blur', selector, event => {
     if ( storage.isClick ) return;
     console.log( event.type )
     const $target = $( event.target ),
@@ -69,4 +71,4 @@ function recovery() {
     });
 }
 
-convert();
+location.host == 'mubu.com' && convert();
